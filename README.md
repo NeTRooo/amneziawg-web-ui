@@ -340,7 +340,7 @@ Export Configuration
 `curl "http://localhost/api/system/iptables-test?server_id=wg_abc123"`
 
 # Security
-The app is exposed directly without authentication.
+The app is exposed directly on 80 or custom port with basic authentication.
 
 > [!IMPORTANT]
 > I strongly recommend protecting endpoints with firewall and/or nginx authentication.
