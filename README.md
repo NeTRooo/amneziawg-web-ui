@@ -174,6 +174,8 @@ Official docker image repository: https://hub.docker.com/r/alexishw/amneziawg-we
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `NGINX_PORT` | `80` | External port for web interface |
+| `NGINX_USER` | `admin` | Username for basic auth in the app |
+| `NGINX_PASSWORD` | `changeme` | Password for basic auth in the app |
 | `AUTO_START_SERVERS` | `true` | Auto-start servers on container startup |
 | `DEFAULT_MTU` | `1280` | Default MTU value for new servers. Effective only for api requests. For UI management set via UI. |
 | `DEFAULT_SUBNET` | `10.0.0.0/24` | Default subnet for new servers. Effective only for api requests. For UI management set via UI. |
@@ -231,6 +233,7 @@ docker run -d \
   -p 9090:9090 \
   -p 51821:51821/udp \
   -e NGINX_PORT=9090 \
+  -e NGINX_PASSWORD=1234
   -e AUTO_START_SERVERS=false \
   -e DEFAULT_MTU=1420 \
   -e DEFAULT_SUBNET=10.8.0.0/24 \
@@ -341,6 +344,12 @@ The app is exposed directly without authentication.
 
 > [!IMPORTANT]
 > I strongly recommend protecting endpoints with firewall and/or nginx authentication.
+> Basic auth alone is not strong enough and can be bruteforced.
+
+By default, docker image is built with user `admin` and password `changeme`. To change the default behaviour you need to provide with docker envs `NGINX_USER` and `NGINX_PASSWORD`.
+
+> [!NOTE]
+> There is no possiblity to protect the built-in nginx with allow ip rule, because when run in docker with bridge mode docker doesn't pass the real client ip into the container. External proxy or additional container is required to perform client ip check.
 
 # Support
 The NO support provided as well as no regualr upodates are planned. Found issues can be fixed if free time permits.

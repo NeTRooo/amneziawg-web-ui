@@ -7,6 +7,7 @@ RUN apk update && apk add \
     nginx \
     supervisor \
     curl \
+    apache2-utils \
     && rm -rf /var/cache/apk/*
 
 RUN pip3 install flask flask_socketio flask-wtf requests python-socketio eventlet --break-system-packages
