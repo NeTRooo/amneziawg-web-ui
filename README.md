@@ -5,6 +5,9 @@ All server configuration is done via web interface or via API endpoints. Providi
 
 <img src="screenshot.png" alt="Web UI screenshot" width="50%"/>
 
+> [!TIP]
+> For project description in **Russian** please refer to [author blog page](https://itprospb.ru/2025/11/web-ui-dlya-upravleniya-serverom-amneziawg/).
+
 ## 🚀 Features
 
 *   **Web-based Management**: Intuitive UI for managing VPN servers and clients
