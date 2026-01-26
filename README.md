@@ -260,14 +260,15 @@ docker run -d \
 
 ## SSL certificates issue
 
-When `SSL_EMAIL` and `SSL_DOMAIN` are specified, certbot requests certificate for a domain provided at docker container run.
+When `SSL_EMAIL` and `SSL_DOMAIN` are specified, certbot requests certificate for the domain provided at docker container run.
 For this purpose you additionally need to expose `port 80`. It provides access only to the `/.well-known` endpoint, so there is no additional security risk introduced.
-You can't use a single port 80 both for the application and for SSL deployment: if wish to use ssl, set the custom port for the app.
+You can't use a single port 80 both for the application and for the SSL deployment: if you wish to use ssl, set the custom port for the app.
 
-You can check if the certificate was issued by checking docker logs at start or by viewing `/var/log/letsencrypt/letsencrypt.log` inside the container.
+You can check if the certificate was issued by checking docker logs at the start or by viewing `/var/log/letsencrypt/letsencrypt.log` inside the container.
+
 Cronjob to renew a certificate is also automatically created that runs every Tuesday.
 
-If you wish to keep the issued certificate after container recreation, you need mount container folder to a host:
+If you wish to keep the issued certificate during container recreation, you need to mount container folder to a host:
 `/etc/letsencrypt` or` /etc/letsencrypt/live`.
 
 ## 📊 Obfuscation Parameters
